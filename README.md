@@ -15,13 +15,21 @@ node-red-node-ui-table. Об'єкти pair, price i amount є text input. Об'�
 # Властивості нодів
 Властивості наведені у фото
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/start.png)
+
+У кнопці open стандартні властивості, тільки у payload має бути data.txt (назва файлу).
 pair price i amount мають відповідні властивості
+
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/pair.png)
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/isFile.png)
+
+У read-file у Filename має бути шлях до файла, у мене E://data.txt.
+У об'єкт table добавляєм властивості як на фото. Кожна колонка містить ім'я і властивість: (name - property) pair-pair, price-price, price now-price_now, per cent-cent, amount-amount, time-time, delete-delete.
+
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/table.png)
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/update.png)
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/element.png)
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/switch.png)
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/request.png)
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/write.png)
+
 Інші властивості стандартні.
