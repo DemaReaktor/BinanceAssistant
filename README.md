@@ -182,4 +182,4 @@ return msg;
 [back to content](#Content)
 
 # Example
-![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/Example.png)
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/example.png)
