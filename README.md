@@ -61,3 +61,109 @@ pair price i amount мають відповідні властивості
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/write.png)
 
 Інші властивості стандартні.
+
+#Code
+
+start
+```js
+var pair = new Object();
+var price = new Object();
+var amount = new Object();
+pair.payload = "BTCUSDT";
+price.payload = "1";
+amount.payload = "1";
+msg.payload = "data.txt";
+
+return [msg, pair, price, amount];
+```
+
+global_property_add
+```js
+global.set(msg.topic, msg.payload);
+```
+
+add
+```js
+global.get("row").push({ "pair": global.get("pair"),
+    "price": global.get("price"), "amount": 
+        global.get("amount"), "time": new Date().toLocaleString(), 
+        "price_now": "not update", "cent":"no data",
+         "delete": "delete"});
+    
+return msg;
+```
+
+update table
+```js
+msg.payload = global.get("row");
+var data = new Object();
+data.payload = "";
+return [data,msg];
+```
+
+get-data
+```js
+msg.payload = global.get("row");
+return msg;
+```
+
+set-data
+```js
+global.set("row", JSON.parse(msg.payload));
+msg.payload = global.get("row");
+return msg;
+```
+
+delete
+```js
+if(msg.topic == "delete")
+{
+    var rows = global.get("row");
+    rows.pop(rows[msg.row]);
+    return msg;
+}
+```
+
+update-function
+```js
+msg.payload = global.get("row");
+
+var copy = new Set();
+global.get("row").forEach(function(element) {
+        copy.add(element["pair"]);
+});
+
+global.set("update", copy);
+msg.payload = "start";
+var time = new Object();
+time.payload = new Date().toLocaleString();
+return [msg, time];
+```
+
+element
+```js
+var first = global.get("update").values().next().value;
+
+if (msg.payload != "start"){
+    global.get("row").forEach(function(element) {
+        if (element["pair"] == first){
+            element["price_now"] =
+                JSON.parse(msg.payload)["price"];
+                element["cent"] = element["price"]/
+                element["price_now"];
+        }
+    });
+    global.get("update").delete(first);
+        }
+
+if (global.get("update").size <= 0) {
+    msg.payload = "finish";
+    return msg;
+}
+
+var pair = global.get("update").values().next().value;
+msg.url = "https://www.binance.com/api/v3/ticker/price?symbol="
+    + pair;
+
+return msg;
+```
