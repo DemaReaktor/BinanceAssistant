@@ -1,7 +1,35 @@
 # BinanceAssistant
 Binance Assistant help save, open data about tokens. 
 Ukrainian language is below(українська нижче)
-# Properties of nodes
+# Installs
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/installs.png)
+# Nodes
+Blue object is **start-up-trigger**, dark and green is **fs-ops-access**, object **table** is **table** from 
+**node-red-node-ui-table**. Objects **pair**, **price** and **amount** are **text input**. **read-file** is **read file**, **write-file** is  **write file**. **update dashboard** is **ui control**, **if-finish** – **switch**, **get-price-now** - **http request**. 
+Other objects are **button** or **function**.
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/nodes.png)
+# Groups
+Groups are two. There are **pair**, **price**, **amount** and **button_add** in first group, other are in second group.
+# Node properties
+There are node properties in photos.
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/start.png)
+
+**open** has standart properties expend payload has data.txt (filename).
+**pair price and amount** has same properies (pair - price - amount)
+
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/pair.png)
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/isFile.png)
+
+There is path to file in **read-file** -> Filename, I have E://data.txt.
+ Every column has name and property: (name - property) **pair-pair, price-price, price now-price_now, per cent-cent, amount-amount, time-time, delete-delete**.
+
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/table.png)
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/update.png)
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/element.png)
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/switch.png)
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/request.png)
+![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/write.png)
+
 Other properies  are standart.
 # Укр
 # Пакети
