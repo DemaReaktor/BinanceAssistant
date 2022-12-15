@@ -2,7 +2,7 @@
 Binance Assistant help save, open data about tokens. 
 Ukrainian language is below(українська нижче)
 # Content
-
+[Code]
 
 # Installs
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/installs.png)
@@ -173,5 +173,3 @@ return msg;
 
 [Headers](#headers)  
 [Emphasis](#emphasis)  
-...snip...    
-<a name="headers"/>
