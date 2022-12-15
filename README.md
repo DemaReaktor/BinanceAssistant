@@ -38,6 +38,8 @@ There is path to file in **read-file** -> Filename, I have E://data.txt.
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/write.png)
 
 Other properies  are standart.
+
+[back to content](#Content)
 # Укр
 # Пакети
 ![](https://github.com/DemaReaktor/BinanceAssistant/blob/main/installs.png)
@@ -69,6 +71,7 @@ pair price i amount мають відповідні властивості
 
 Інші властивості стандартні.
 
+[до змісту](#Content)
 # Code
 
 start
@@ -174,3 +177,4 @@ msg.url = "https://www.binance.com/api/v3/ticker/price?symbol="
 
 return msg;
 ```
+[back to content](#Content)
