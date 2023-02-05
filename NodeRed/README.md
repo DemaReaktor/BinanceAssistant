@@ -1,5 +1,6 @@
 # BinanceAssistant
 Binance Assistant help save, open data about tokens. 
+File BinanceAssistant.json is flow with nodes.
 Ukrainian language is below(українська нижче)
 # Content
 [Node properties](#Node-properties)
