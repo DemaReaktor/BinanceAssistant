@@ -1,0 +1,723 @@
+[
+    {
+        "id": "e3b1e2643007d4a8",
+        "type": "tab",
+        "label": "BinanceAssistant",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "e79f42cb3b747651",
+        "type": "ui_button",
+        "z": "e3b1e2643007d4a8",
+        "name": "button_add",
+        "group": "35a38e654487a2af",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "add new token",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "clicked",
+        "payloadType": "str",
+        "topic": "add",
+        "topicType": "str",
+        "x": 510,
+        "y": 380,
+        "wires": [
+            [
+                "cf79f02043dba6b9"
+            ]
+        ]
+    },
+    {
+        "id": "cf79f02043dba6b9",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "add",
+        "func": "global.get(\"row\").push({ \"pair\": global.get(\"pair\"),\n    \"price\": global.get(\"price\"), \"amount\": \n        global.get(\"amount\"), \"time\": new Date().toLocaleString(), \n        \"price_now\": \"not update\", \"cent\":\"no data\",\n         \"delete\": \"delete\"});\n    \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 380,
+        "wires": [
+            [
+                "33cfe610dd2f58b1"
+            ]
+        ]
+    },
+    {
+        "id": "36e89b0dc2964448",
+        "type": "ui_text_input",
+        "z": "e3b1e2643007d4a8",
+        "name": "pair",
+        "label": "pair",
+        "tooltip": "",
+        "group": "35a38e654487a2af",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "pair",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 490,
+        "y": 420,
+        "wires": [
+            [
+                "be4c6ad0cd791090"
+            ]
+        ]
+    },
+    {
+        "id": "4f22bf4b3f1b1b49",
+        "type": "ui_text_input",
+        "z": "e3b1e2643007d4a8",
+        "name": "price",
+        "label": "price",
+        "tooltip": "",
+        "group": "35a38e654487a2af",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "price",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 490,
+        "y": 460,
+        "wires": [
+            [
+                "be4c6ad0cd791090"
+            ]
+        ]
+    },
+    {
+        "id": "d0f6afd60afb5ab7",
+        "type": "ui_text_input",
+        "z": "e3b1e2643007d4a8",
+        "name": "amount",
+        "label": "amount",
+        "tooltip": "",
+        "group": "35a38e654487a2af",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "amount",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "str",
+        "x": 500,
+        "y": 500,
+        "wires": [
+            [
+                "be4c6ad0cd791090"
+            ]
+        ]
+    },
+    {
+        "id": "be4c6ad0cd791090",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "global_property_add",
+        "func": "global.set(msg.topic, msg.payload);",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b379333d03810eb3",
+        "type": "ui_table",
+        "z": "e3b1e2643007d4a8",
+        "group": "ffcb78c20f3c1bb9",
+        "name": "",
+        "order": 5,
+        "width": "14",
+        "height": "10",
+        "columns": [
+            {
+                "field": "pair",
+                "title": "pair",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "price",
+                "title": "price",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "price_now",
+                "title": "price now",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "cent",
+                "title": "per cent",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "amount",
+                "title": "amount",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "time",
+                "title": "time",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "delete",
+                "title": "",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 1,
+        "cts": true,
+        "x": 1170,
+        "y": 400,
+        "wires": [
+            [
+                "6545a798fc90add7"
+            ]
+        ]
+    },
+    {
+        "id": "d90166d10a823d58",
+        "type": "ui_button",
+        "z": "e3b1e2643007d4a8",
+        "name": "update-button",
+        "group": "ffcb78c20f3c1bb9",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "update",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 260,
+        "y": 260,
+        "wires": [
+            [
+                "69bd9e654b428126"
+            ]
+        ]
+    },
+    {
+        "id": "69bd9e654b428126",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "update-function",
+        "func": "msg.payload = global.get(\"row\");\n\nvar copy = new Set();\nglobal.get(\"row\").forEach(function(element) {\n        copy.add(element[\"pair\"]);\n});\n\nglobal.set(\"update\", copy);\nmsg.payload = \"start\";\nvar time = new Object();\ntime.payload = new Date().toLocaleString();\nreturn [msg, time];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 260,
+        "wires": [
+            [
+                "55a73bb36f5e220b"
+            ],
+            [
+                "52cf58b635626ae5"
+            ]
+        ]
+    },
+    {
+        "id": "52cf58b635626ae5",
+        "type": "ui_text",
+        "z": "e3b1e2643007d4a8",
+        "group": "ffcb78c20f3c1bb9",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "time update",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 610,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "33cfe610dd2f58b1",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "update table",
+        "func": "msg.payload = global.get(\"row\");\nvar data = new Object();\ndata.payload = \"\";\nreturn [data,msg];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1030,
+        "y": 380,
+        "wires": [
+            [
+                "2cb3018e22ea4b0d"
+            ],
+            [
+                "b379333d03810eb3"
+            ]
+        ]
+    },
+    {
+        "id": "8e35d80cbd76112e",
+        "type": "http request",
+        "z": "e3b1e2643007d4a8",
+        "name": "get-price-now",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [
+            {
+                "keyType": "Accept",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "*/*"
+            },
+            {
+                "keyType": "Accept-Encoding",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "gzip, deflate, br"
+            },
+            {
+                "keyType": "Accept-Language",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "en-GB,en-US;q=0.9,en;q=0.8"
+            },
+            {
+                "keyType": "Cache-Control",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "no-cache"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Connection",
+                "valueType": "other",
+                "valueValue": "keep-alive"
+            },
+            {
+                "keyType": "Content-Type",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "application/json"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Origin",
+                "valueType": "other",
+                "valueValue": "https://p2p.binance.com"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "Pragma",
+                "valueType": "other",
+                "valueValue": "no-cache"
+            },
+            {
+                "keyType": "other",
+                "keyValue": "TE",
+                "valueType": "other",
+                "valueValue": "Trailers"
+            },
+            {
+                "keyType": "User-Agent",
+                "keyValue": "",
+                "valueType": "other",
+                "valueValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0"
+            }
+        ],
+        "x": 800,
+        "y": 280,
+        "wires": [
+            [
+                "55a73bb36f5e220b"
+            ]
+        ]
+    },
+    {
+        "id": "55a73bb36f5e220b",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "element",
+        "func": "var first = global.get(\"update\").values().next().value;\n\nif (msg.payload != \"start\"){\n    global.get(\"row\").forEach(function(element) {\n        if (element[\"pair\"] == first){\n            element[\"price_now\"] =\n                JSON.parse(msg.payload)[\"price\"];\n                element[\"cent\"] = element[\"price\"]/\n                element[\"price_now\"];\n        }\n    });\n    global.get(\"update\").delete(first);\n        }\n\nif (global.get(\"update\").size <= 0) {\n    msg.payload = \"finish\";\n    return msg;\n}\n\nvar pair = global.get(\"update\").values().next().value;\nmsg.url = \"https://www.binance.com/api/v3/ticker/price?symbol=\"\n    + pair;\n\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 220,
+        "wires": [
+            [
+                "a7b6a2edf2509863"
+            ]
+        ]
+    },
+    {
+        "id": "a7b6a2edf2509863",
+        "type": "switch",
+        "z": "e3b1e2643007d4a8",
+        "name": "if-finish",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "finish",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 820,
+        "y": 220,
+        "wires": [
+            [
+                "33cfe610dd2f58b1"
+            ],
+            [
+                "8e35d80cbd76112e"
+            ]
+        ]
+    },
+    {
+        "id": "6545a798fc90add7",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "delete",
+        "func": "if(msg.topic == \"delete\")\n{\n    var rows = global.get(\"row\");\n    rows.pop(rows[msg.row]);\n    return msg;\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 870,
+        "y": 460,
+        "wires": [
+            [
+                "33cfe610dd2f58b1"
+            ]
+        ]
+    },
+    {
+        "id": "2cb3018e22ea4b0d",
+        "type": "ui_ui_control",
+        "z": "e3b1e2643007d4a8",
+        "name": "update dashboard",
+        "events": "all",
+        "x": 1210,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8b0c94614bdf9a4e",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "get-data",
+        "func": "msg.payload = global.get(\"row\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 520,
+        "wires": [
+            [
+                "562a7bb50de19049"
+            ]
+        ]
+    },
+    {
+        "id": "562a7bb50de19049",
+        "type": "file",
+        "z": "e3b1e2643007d4a8",
+        "name": "",
+        "filename": "E://data.txt",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 970,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ca8aca4ff8e2a595",
+        "type": "file in",
+        "z": "e3b1e2643007d4a8",
+        "name": "read-file",
+        "filename": "E://data.txt",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 660,
+        "y": 320,
+        "wires": [
+            [
+                "a33f4594d6205948"
+            ]
+        ]
+    },
+    {
+        "id": "9de4c4a0f3d57e76",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "start",
+        "func": "var pair = new Object();\nvar price = new Object();\nvar amount = new Object();\npair.payload = \"BTCUSDT\";\nprice.payload = \"1\";\namount.payload = \"1\";\nmsg.payload = \"data.txt\";\n\nreturn [msg, pair, price, amount];",
+        "outputs": 4,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 330,
+        "y": 420,
+        "wires": [
+            [
+                "75210b975dfd1f3d"
+            ],
+            [
+                "36e89b0dc2964448"
+            ],
+            [
+                "4f22bf4b3f1b1b49"
+            ],
+            [
+                "d0f6afd60afb5ab7"
+            ]
+        ]
+    },
+    {
+        "id": "619baca0da8e238c",
+        "type": "ui_button",
+        "z": "e3b1e2643007d4a8",
+        "name": "save",
+        "group": "ffcb78c20f3c1bb9",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "save",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 650,
+        "y": 520,
+        "wires": [
+            [
+                "8b0c94614bdf9a4e"
+            ]
+        ]
+    },
+    {
+        "id": "a33f4594d6205948",
+        "type": "function",
+        "z": "e3b1e2643007d4a8",
+        "name": "set-data",
+        "func": "global.set(\"row\", JSON.parse(msg.payload));\nmsg.payload = global.get(\"row\");\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 340,
+        "wires": [
+            [
+                "33cfe610dd2f58b1"
+            ]
+        ]
+    },
+    {
+        "id": "75210b975dfd1f3d",
+        "type": "fs-ops-access",
+        "z": "e3b1e2643007d4a8",
+        "name": "is-file",
+        "path": "E://",
+        "pathType": "str",
+        "filename": "payload",
+        "filenameType": "msg",
+        "read": true,
+        "write": false,
+        "throwerror": false,
+        "x": 490,
+        "y": 340,
+        "wires": [
+            [
+                "ca8aca4ff8e2a595"
+            ],
+            [
+                "a33f4594d6205948"
+            ]
+        ]
+    },
+    {
+        "id": "e61c7304fa60114f",
+        "type": "ui_button",
+        "z": "e3b1e2643007d4a8",
+        "name": "",
+        "group": "ffcb78c20f3c1bb9",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "open",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "data.txt",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 340,
+        "wires": [
+            [
+                "75210b975dfd1f3d"
+            ]
+        ]
+    },
+    {
+        "id": "b9404222b9745f60",
+        "type": "start-up-trigger",
+        "z": "e3b1e2643007d4a8",
+        "x": 160,
+        "y": 420,
+        "wires": [
+            [
+                "9de4c4a0f3d57e76"
+            ]
+        ]
+    },
+    {
+        "id": "35a38e654487a2af",
+        "type": "ui_group",
+        "name": "Binance",
+        "tab": "c2ad260c24ef29a9",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ffcb78c20f3c1bb9",
+        "type": "ui_group",
+        "name": "table",
+        "tab": "c2ad260c24ef29a9",
+        "order": 2,
+        "disp": true,
+        "width": "14",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c2ad260c24ef29a9",
+        "type": "ui_tab",
+        "name": "закладка2",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]
