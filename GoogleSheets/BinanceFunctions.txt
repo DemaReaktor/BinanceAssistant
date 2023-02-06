@@ -1,0 +1,15 @@
+function pairprice(symbol="BTCUSDT"){
+  var headers = {
+     "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Language": "en-GB,en-US;q=0.9,en;q=0.8",
+    "Cache-Control": "no-cache",
+    "Connection": "keep-alive",
+    "content-type": "application/json",
+    "Origin": "https://p2p.binance.com",
+    "Pragma": "no-cache",
+    "TE": "Trailers",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:88.0) Gecko/20100101 Firefox/88.0"
+  };
+  return JSON.parse(UrlFetchApp.fetch("https://www.binance.com/api/v3/ticker/price?symbol="+symbol,{"headers":headers})).price.replace(".",",");
+}
